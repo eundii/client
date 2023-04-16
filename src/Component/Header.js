@@ -17,7 +17,7 @@ function Header() {
         <HeaderNav>
           <ul>
             <li>
-              <Link to="/list">List</Link>
+              <Link to="/">List</Link>
             </li>
             <li>
               <Link to="/upload">Upload</Link>
