@@ -36,4 +36,10 @@ const PostListItem = styled.li`
   }
 `;
 
-export { PostList, PostListHeader, PostListItem };
+const EmptyArea = styled.div`
+  padding: 10rem 0;
+  text-align: center;
+  font-size: 2rem;
+`;
+
+export { PostList, PostListHeader, PostListItem, EmptyArea };

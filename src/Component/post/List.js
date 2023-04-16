@@ -6,7 +6,7 @@ import {
   SectionWrap,
   SectionInner,
 } from "../../styles/LayoutCss";
-import { PostList, PostListHeader } from "../../styles/ListCss";
+import { PostList, PostListHeader, EmptyArea } from "../../styles/ListCss";
 import ListItem from "./ListItem";
 
 function List() {
@@ -33,11 +33,15 @@ function List() {
           <p className="total-count">total ({postList.length})</p>
           <div className="filter-area">필터영역</div>
         </PostListHeader>
-        <PostList>
-          {postList.map((post, idx) => {
-            return <ListItem post={post} />;
-          })}
-        </PostList>
+        {postList.length !== 0 ? (
+          <PostList>
+            {postList.map((post, idx) => {
+              return <ListItem post={post} />;
+            })}
+          </PostList>
+        ) : (
+          <EmptyArea>내용이 없습니다.</EmptyArea>
+        )}
       </SectionInner>
     </SectionWrap>
   );
