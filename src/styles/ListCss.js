@@ -18,10 +18,12 @@ const PostList = styled.ul`
 `;
 
 const PostListItem = styled.li`
-  display: flex;
-  padding: 2rem 3rem;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
+  > a {
+    display: flex;
+    padding: 2rem 3rem;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
   .item-left {
     padding-right: 2rem;
   }
