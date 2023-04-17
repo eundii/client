@@ -2,9 +2,13 @@ import styled from "@emotion/styled";
 
 const FooterBtnArea = styled.div`
   margin-top: 5rem;
+  display: flex;
   button {
-    display: block;
-    width: 100%;
+    flex: 1;
+    justify-content: center;
+    + button {
+      margin-left: 2rem;
+    }
   }
 `;
 const BtnSubmit = styled.button`
@@ -26,6 +30,15 @@ const BtnSubmit = styled.button`
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
 
+const BtnCancel = styled.button`
+  display: inline-flex;
+  border-radius: 3rem;
+  padding: 1.5rem 2rem;
+  color: white;
+  font-size: 2rem;
+  background-color: #aaa;
+`;
+
 const InfoBtnArea = styled.div`
   display: flex;
   align-items: center;
@@ -38,6 +51,10 @@ const BtnIcon = styled.button`
   &:first-child {
     margin-left: 0;
   }
+  &:hover,
+  &:focus {
+    color: black;
+  }
 `;
 
-export { FooterBtnArea, BtnSubmit, InfoBtnArea, BtnIcon };
+export { FooterBtnArea, BtnSubmit, BtnCancel, InfoBtnArea, BtnIcon };

@@ -6,6 +6,7 @@ import List from "./Component/post/List";
 import Upload from "./Component/post/Upload";
 import { BodyWrap } from "./styles/LayoutCss";
 import Detail from "./Component/post/Detail";
+import Edit from "./Component/post/Edit";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<List />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/post/:postNum" element={<Detail />} />
+          <Route path="/edit/:postNum" element={<Edit />} />
         </Routes>
       </BodyWrap>
     </div>

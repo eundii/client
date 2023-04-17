@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import {
@@ -15,6 +15,7 @@ function Detail() {
   let params = useParams();
   const [postInfo, setPostInfo] = useState({});
   const [flag, setFlag] = useState(false);
+  let navigate = useNavigate();
 
   useEffect(() => {
     let body = {
@@ -33,6 +34,10 @@ function Detail() {
       });
   }, []);
 
+  const onEdit = () => {
+    navigate(`/edit/${postInfo.postNum}`);
+  };
+
   return (
     <SectionWrap>
       {flag ? (
@@ -44,7 +49,11 @@ function Detail() {
               <DetailInfo>
                 <div className="info">사용자 | 날짜</div>
                 <InfoBtnArea>
-                  <BtnIcon>
+                  <BtnIcon
+                    onClick={() => {
+                      onEdit();
+                    }}
+                  >
                     <AiFillEdit />
                     <span className="sr-only">수정</span>
                   </BtnIcon>

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import {
@@ -8,12 +8,16 @@ import {
   SectionInner,
 } from "../../styles/LayoutCss";
 import { FormGroup } from "../../styles/FormCss";
-import { BtnSubmit, FooterBtnArea } from "../../styles/BtnCss";
+import { BtnSubmit, BtnCancel, FooterBtnArea } from "../../styles/BtnCss";
 
-function Upload({ contentList, setContentList }) {
+function Edit() {
+  let params = useParams();
+  const [postInfo, setPostInfo] = useState({});
+  const [flag, setFlag] = useState(false);
+  let navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  let navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -25,16 +29,17 @@ function Upload({ contentList, setContentList }) {
     let body = {
       title,
       content,
+      postNum: params.postNum,
     };
 
     axios
-      .post("/api/post/submit", body)
+      .post("/api/post/edit", body)
       .then((response) => {
         if (response.data.success) {
-          alert("글 작성이 완료되었습니다.");
-          navigate("/");
+          alert("글 수정이 완료되었습니다.");
+          navigate(`/post/${params.postNum}`);
         } else {
-          alert("글 작성에 실패하였습니다.");
+          alert("글 수정에 실패하였습니다.");
         }
       })
       .catch((error) => {
@@ -42,9 +47,37 @@ function Upload({ contentList, setContentList }) {
       });
   };
 
+  const onCancel = (e) => {
+    e.preventDefault();
+    navigate(-1);
+  };
+
+  useEffect(() => {
+    let body = {
+      postNum: params.postNum,
+    };
+    axios
+      .post("/api/post/detail", body)
+      .then((response) => {
+        if (response.data.success) {
+          setPostInfo(response.data.post);
+          setFlag(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    const { title, content } = postInfo;
+    setTitle(title);
+    setContent(content);
+  }, [postInfo]);
+
   return (
     <SectionWrap>
-      <SectionTitle>글 작성하기</SectionTitle>
+      <SectionTitle>글 수정하기</SectionTitle>
       <SectionInner>
         <form>
           <FormGroup>
@@ -74,7 +107,14 @@ function Upload({ contentList, setContentList }) {
             />
           </FormGroup>
           <FooterBtnArea>
-            <BtnSubmit onClick={(e) => onSubmit(e)}>제출하기</BtnSubmit>
+            <BtnSubmit onClick={(e) => onSubmit(e)}>수정하기</BtnSubmit>
+            <BtnCancel
+              onClick={(e) => {
+                onCancel(e);
+              }}
+            >
+              취소하기
+            </BtnCancel>
           </FooterBtnArea>
         </form>
       </SectionInner>
@@ -82,4 +122,4 @@ function Upload({ contentList, setContentList }) {
   );
 }
 
-export default Upload;
+export default Edit;
