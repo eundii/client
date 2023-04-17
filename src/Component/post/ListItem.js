@@ -6,8 +6,8 @@ import { PostListItem } from "../../styles/ListCss";
 function ListItem({ post }) {
   const { title, content, postNum } = post;
   return (
-    <PostListItem key={postNum}>
-      <Link to={`/post/${post.postNum}`}>
+    <PostListItem>
+      <Link to={`/post/${postNum}`}>
         <div className="item-left">작성자 영역</div>
         <div className="item-right">
           <p className="item-title">{title}</p>

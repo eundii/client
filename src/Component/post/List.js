@@ -35,8 +35,8 @@ function List() {
         </PostListHeader>
         {postList.length !== 0 ? (
           <PostList>
-            {postList.map((post, idx) => {
-              return <ListItem post={post} />;
+            {postList.map((post) => {
+              return <ListItem post={post} key={post.postNum} />;
             })}
           </PostList>
         ) : (
