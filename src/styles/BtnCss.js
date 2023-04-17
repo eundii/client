@@ -26,4 +26,18 @@ const BtnSubmit = styled.button`
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
 
-export { FooterBtnArea, BtnSubmit };
+const InfoBtnArea = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const BtnIcon = styled.button`
+  margin-left: 1.2rem;
+  font-size: 2rem;
+  color: #555;
+  &:first-child {
+    margin-left: 0;
+  }
+`;
+
+export { FooterBtnArea, BtnSubmit, InfoBtnArea, BtnIcon };

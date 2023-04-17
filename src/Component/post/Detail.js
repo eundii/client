@@ -7,6 +7,9 @@ import {
   SectionWrap,
   SectionInner,
 } from "../../styles/LayoutCss";
+import { DetailHeader, DetailBody, DetailInfo } from "../../styles/DetailCss";
+import { InfoBtnArea, BtnIcon } from "../../styles/BtnCss";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 
 function Detail() {
   let params = useParams();
@@ -36,8 +39,25 @@ function Detail() {
         <>
           <SectionTitle>글 상세보기</SectionTitle>
           <SectionInner>
-            <p>{postInfo.title}</p>
-            <p>{postInfo.content}</p>
+            <DetailHeader>
+              <p className="detail-title">{postInfo.title}</p>
+              <DetailInfo>
+                <div className="info">사용자 | 날짜</div>
+                <InfoBtnArea>
+                  <BtnIcon>
+                    <AiFillEdit />
+                    <span className="sr-only">수정</span>
+                  </BtnIcon>
+                  <BtnIcon>
+                    <AiFillDelete />
+                    <span className="sr-only">삭제</span>
+                  </BtnIcon>
+                </InfoBtnArea>
+              </DetailInfo>
+            </DetailHeader>
+            <DetailBody>
+              <p>{postInfo.content}</p>
+            </DetailBody>
           </SectionInner>
         </>
       ) : (
