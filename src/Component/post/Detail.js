@@ -38,6 +38,24 @@ function Detail() {
     navigate(`/edit/${postInfo.postNum}`);
   };
 
+  const onDelete = () => {
+    if (window.confirm("정말로 삭제하시겠습니까?")) {
+      let body = {
+        postNum: params.postNum,
+      };
+      axios
+        .post("/api/post/delete", body)
+        .then((response) => {
+          if (response.data.success) {
+            alert("게시글이 삭제되었습니다.");
+            navigate("/");
+          }
+        })
+        .catch((error) => {
+          alert("게시글 삭제에 실패하였습니다.");
+        });
+    }
+  };
   return (
     <SectionWrap>
       {flag ? (
@@ -57,7 +75,11 @@ function Detail() {
                     <AiFillEdit />
                     <span className="sr-only">수정</span>
                   </BtnIcon>
-                  <BtnIcon>
+                  <BtnIcon
+                    onClick={() => {
+                      onDelete();
+                    }}
+                  >
                     <AiFillDelete />
                     <span className="sr-only">삭제</span>
                   </BtnIcon>
