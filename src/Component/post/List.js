@@ -18,7 +18,6 @@ function List() {
         if (response.data.success) {
           setPostList([...response.data.postList]);
         }
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
