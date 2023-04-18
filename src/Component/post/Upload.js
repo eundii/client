@@ -9,6 +9,7 @@ import {
 } from "../../styles/LayoutCss";
 import { FormGroup } from "../../styles/FormCss";
 import { BtnSubmit, FooterBtnArea } from "../../styles/BtnCss";
+import ImageUpload from "./ImageUpload";
 
 function Upload({ contentList, setContentList }) {
   const [title, setTitle] = useState("");
@@ -72,6 +73,10 @@ function Upload({ contentList, setContentList }) {
               }}
               value={content}
             />
+          </FormGroup>
+          <FormGroup>
+            <label htmlFor="uploadImg">이미지 첨부</label>
+            <ImageUpload />
           </FormGroup>
           <FooterBtnArea>
             <BtnSubmit onClick={(e) => onSubmit(e)}>제출하기</BtnSubmit>
