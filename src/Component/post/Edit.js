@@ -91,7 +91,7 @@ function Edit() {
               type="text"
               className="form-input"
               placeholder="글 제목을 입력해주세요."
-              value={title}
+              value={title || ""}
               onChange={(e) => {
                 setTitle(e.target.value);
               }}
@@ -107,12 +107,12 @@ function Edit() {
               onChange={(e) => {
                 setContent(e.target.value);
               }}
-              value={content}
+              value={content || ""}
             />
           </FormGroup>
           <FormGroup>
             <label htmlFor="uploadImg">이미지 첨부</label>
-            <ImageUpload setImage={setImage} />
+            <ImageUpload setImage={setImage} image={image} />
           </FormGroup>
           <FooterBtnArea>
             <BtnSubmit onClick={(e) => onSubmit(e)}>수정하기</BtnSubmit>

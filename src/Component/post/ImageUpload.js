@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { UploadFormGroup } from "../../styles/FormCss";
 
-function ImageUpload({ setImage }) {
+function ImageUpload({ setImage, image }) {
   const [fileName, setFileName] = useState("");
 
   const fileUploadHandler = (e) => {
@@ -17,13 +17,17 @@ function ImageUpload({ setImage }) {
     });
   };
 
+  useEffect(() => {
+    setFileName(image);
+  }, []);
+
   return (
     <UploadFormGroup>
       <input
         id="uploadImg"
         className="form-input file-name"
         type="text"
-        value={fileName}
+        value={fileName || ""}
         placeholder="이미지만 첨부 가능합니다."
         readOnly
       />
