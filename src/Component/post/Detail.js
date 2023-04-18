@@ -87,6 +87,14 @@ function Detail() {
               </DetailInfo>
             </DetailHeader>
             <DetailBody>
+              {postInfo.image ? (
+                <div className="img-area">
+                  <img
+                    src={`http://localhost:5000/${postInfo.image}`}
+                    alt={postInfo.title}
+                  />
+                </div>
+              ) : null}
               <p>{postInfo.content}</p>
             </DetailBody>
           </SectionInner>

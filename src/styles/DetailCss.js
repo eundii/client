@@ -17,6 +17,13 @@ const DetailBody = styled.div`
   padding: 3rem 0;
   text-align: left;
   font-size: 1.8rem;
+  .img-area {
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
 `;
 
 const DetailInfo = styled.div`

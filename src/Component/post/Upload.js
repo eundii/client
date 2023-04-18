@@ -11,9 +11,10 @@ import { FormGroup } from "../../styles/FormCss";
 import { BtnSubmit, FooterBtnArea } from "../../styles/BtnCss";
 import ImageUpload from "./ImageUpload";
 
-function Upload({ contentList, setContentList }) {
+function Upload() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [image, setImage] = useState("");
   let navigate = useNavigate();
 
   const onSubmit = (e) => {
@@ -26,6 +27,7 @@ function Upload({ contentList, setContentList }) {
     let body = {
       title,
       content,
+      image,
     };
 
     axios
@@ -76,7 +78,7 @@ function Upload({ contentList, setContentList }) {
           </FormGroup>
           <FormGroup>
             <label htmlFor="uploadImg">이미지 첨부</label>
-            <ImageUpload />
+            <ImageUpload setImage={setImage} />
           </FormGroup>
           <FooterBtnArea>
             <BtnSubmit onClick={(e) => onSubmit(e)}>제출하기</BtnSubmit>

@@ -9,6 +9,7 @@ import {
 } from "../../styles/LayoutCss";
 import { FormGroup } from "../../styles/FormCss";
 import { BtnSubmit, BtnCancel, FooterBtnArea } from "../../styles/BtnCss";
+import ImageUpload from "./ImageUpload";
 
 function Edit() {
   let params = useParams();
@@ -18,6 +19,7 @@ function Edit() {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [image, setImage] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +31,7 @@ function Edit() {
     let body = {
       title,
       content,
+      image,
       postNum: params.postNum,
     };
 
@@ -70,9 +73,10 @@ function Edit() {
   }, []);
 
   useEffect(() => {
-    const { title, content } = postInfo;
+    const { title, content, image } = postInfo;
     setTitle(title);
     setContent(content);
+    setImage(image);
   }, [postInfo]);
 
   return (
@@ -105,6 +109,10 @@ function Edit() {
               }}
               value={content}
             />
+          </FormGroup>
+          <FormGroup>
+            <label htmlFor="uploadImg">이미지 첨부</label>
+            <ImageUpload setImage={setImage} />
           </FormGroup>
           <FooterBtnArea>
             <BtnSubmit onClick={(e) => onSubmit(e)}>수정하기</BtnSubmit>

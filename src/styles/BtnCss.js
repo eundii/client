@@ -48,7 +48,7 @@ const BtnIcon = styled.button`
   margin-left: 1.2rem;
   font-size: 2rem;
   color: #555;
-  &:first-child {
+  &:first-of-type {
     margin-left: 0;
   }
   &:hover,
