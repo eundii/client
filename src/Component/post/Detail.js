@@ -89,10 +89,7 @@ function Detail() {
             <DetailBody>
               {postInfo.image ? (
                 <div className="img-area">
-                  <img
-                    src={`http://localhost:5000/${postInfo.image}`}
-                    alt={postInfo.title}
-                  />
+                  <img src={postInfo.image} alt={postInfo.title} />
                 </div>
               ) : null}
               <p>{postInfo.content}</p>
