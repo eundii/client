@@ -28,6 +28,10 @@ const BtnSubmit = styled.button`
     #ec6ead,
     #3494e6
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  &:disabled {
+    background: #ddd;
+    cursor: default;
+  }
 `;
 
 const BtnCancel = styled.button`
@@ -37,6 +41,10 @@ const BtnCancel = styled.button`
   color: white;
   font-size: 2rem;
   background-color: #aaa;
+  &:disabled {
+    background: #ddd;
+    cursor: default;
+  }
 `;
 
 const InfoBtnArea = styled.div`

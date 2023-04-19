@@ -12,7 +12,7 @@ function Header() {
     <HeaderWrap>
       <HeaderInner>
         <h1>
-          <Link to="/">Eundii Board</Link>
+          <Link to="/">Eundii Coummunity</Link>
         </h1>
         <HeaderNav>
           <ul>
@@ -27,10 +27,10 @@ function Header() {
         <HeaderSubMenu>
           <ul>
             <li>
-              <Link to="">login</Link>
+              <Link to="/login">login</Link>
             </li>
             <li>
-              <Link to="">sign up</Link>
+              <Link to="/register">sign up</Link>
             </li>
           </ul>
         </HeaderSubMenu>
