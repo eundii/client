@@ -22,9 +22,6 @@ export const userSlice = createSlice({
       state.uid = "";
       state.accessToken = "";
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
   },
 });
 

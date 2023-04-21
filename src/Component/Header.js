@@ -1,13 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   HeaderWrap,
   HeaderNav,
   HeaderSubMenu,
   HeaderInner,
 } from "../styles/HeaderCss";
+import { useSelector } from "react-redux";
+import firebase from "../firebase";
 
 function Header() {
+  const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
+
+  const LogoutHandler = () => {
+    firebase.auth().signOut();
+    navigate("/");
+  };
   return (
     <HeaderWrap>
       <HeaderInner>
@@ -27,7 +36,13 @@ function Header() {
         <HeaderSubMenu>
           <ul>
             <li>
-              <Link to="/login">login</Link>
+              {user.accessToken ? (
+                <button type="button" onClick={() => LogoutHandler()}>
+                  logout
+                </button>
+              ) : (
+                <Link to="/login">login</Link>
+              )}
             </li>
             <li>
               <Link to="/register">sign up</Link>
