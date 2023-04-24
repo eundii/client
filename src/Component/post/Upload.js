@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
 import {
@@ -16,7 +17,14 @@ function Upload() {
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
   let navigate = useNavigate();
+  const user = useSelector((state) => state.user);
 
+  useEffect(() => {
+    if (!user.accessToken) {
+      alert("로그인한 회원만 글을 작성할 수 있습니다.");
+      navigate("/login");
+    }
+  }, []);
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -28,6 +36,7 @@ function Upload() {
       title,
       content,
       image,
+      uid: user.uid,
     };
 
     axios

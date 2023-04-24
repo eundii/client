@@ -10,12 +10,14 @@ import {
 import { DetailHeader, DetailBody, DetailInfo } from "../../styles/DetailCss";
 import { InfoBtnArea, BtnIcon } from "../../styles/BtnCss";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 function Detail() {
   let params = useParams();
   const [postInfo, setPostInfo] = useState({});
   const [flag, setFlag] = useState(false);
   let navigate = useNavigate();
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     let body = {
@@ -66,24 +68,26 @@ function Detail() {
               <p className="detail-title">{postInfo.title}</p>
               <DetailInfo>
                 <div className="info">사용자 | 날짜</div>
-                <InfoBtnArea>
-                  <BtnIcon
-                    onClick={() => {
-                      onEdit();
-                    }}
-                  >
-                    <AiFillEdit />
-                    <span className="sr-only">수정</span>
-                  </BtnIcon>
-                  <BtnIcon
-                    onClick={() => {
-                      onDelete();
-                    }}
-                  >
-                    <AiFillDelete />
-                    <span className="sr-only">삭제</span>
-                  </BtnIcon>
-                </InfoBtnArea>
+                {user.uid === postInfo.author.uid && (
+                  <InfoBtnArea>
+                    <BtnIcon
+                      onClick={() => {
+                        onEdit();
+                      }}
+                    >
+                      <AiFillEdit />
+                      <span className="sr-only">수정</span>
+                    </BtnIcon>
+                    <BtnIcon
+                      onClick={() => {
+                        onDelete();
+                      }}
+                    >
+                      <AiFillDelete />
+                      <span className="sr-only">삭제</span>
+                    </BtnIcon>
+                  </InfoBtnArea>
+                )}
               </DetailInfo>
             </DetailHeader>
             <DetailBody>

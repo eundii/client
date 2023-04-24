@@ -8,7 +8,7 @@ function ListItem({ post }) {
   return (
     <PostListItem>
       <Link to={`/post/${postNum}`}>
-        <div className="item-left">작성자 영역</div>
+        <div className="item-left">{post.author.displayName}</div>
         <div className="item-right">
           <p className="item-title">{title}</p>
           <p className="item-content">{content}</p>
